@@ -7,4 +7,4 @@ from src import forms
 @app.route("/", methods=['GET', 'POST'])
 def index():
     form = forms.SearchForm()
-    return render_template('home.html', form=form, addresse=None)
+    return render_template('home.html', form=form, lat=37, lng=-7)
