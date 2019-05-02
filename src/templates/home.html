@@ -1,44 +1,100 @@
+<!--القالب المستعمل من -->
+<!--https://bootsnipp.com/snippets/3X2mq-->
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Simple Map</title>
-    <meta name="viewport" content="initial-scale=1.0">
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" type="text/css">
-    <title>Grand Py Bot</title>
+  <title>الآلي العجوز</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+  <!-- Font Awesome File -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="{{ url_for('static', filename='main.js') }}"></script>
 </head>
+
 <body>
-    <header class="my-2 mx-auto">
-        <div class="text-center mb-3">
-            <img class="text-centred" src="{{ url_for('static', filename='logo.png') }}">
+
+  <div class="container app">
+    <div class="row app-one">
+      <!-- Conversation Start -->
+      <div class="col-sm-12 conversation">
+        <!-- Heading -->
+        <div class="row heading">
+          <div class="col-sm-2 col-md-1 col-xs-3 heading-avatar">
+            <div class="heading-avatar-icon">
+              <img src="{{ url_for('static', filename='logo.png') }}">
+            </div>
+          </div>
+          <div class="col-sm-8 col-xs-7 heading-name">
+            <a class="heading-name-meta">GrandPy Bot
+            </a>
+            <span class="heading-online">Online</span>
+          </div>
+          <div class="col-sm-1 col-xs-1  heading-dot pull-right">
+            <i class="fa fa-ellipsis-v fa-2x  pull-right" aria-hidden="true"></i>
+          </div>
         </div>
-        <div class="container" method="POST">
-            <form class="">
-                <div class="row">
-                    <div class="col-10">
-                        <input id="place" class="form-control" type="search" placeholder="Search" aria-label="Search">
-                    </div>
-                    <div class="col-2">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="return find()">Search</button>
-                    </div>
+        <!-- Heading End -->
+
+        <!-- Message Box -->
+        <div class="row message" id="conversation">
+
+          <div class="row message-body">
+            <div class="col-sm-12 message-main-receiver">
+              <div class="receiver">
+                <div class="message-text">
+                 مرحبا أنا الآلي العجوز، اسألني عن مكان تريد السفر إليه، أهبك من حكمتي...
                 </div>
-            </form>
+                <!--<span class="message-time pull-right">-->
+                <!--  10:15 صباحا-->
+                <!--</span>-->
+              </div>
+            </div>
+          </div>
+
+          <div class="row message-body">
+            <div class="col-sm-12 message-main-sender">
+              <div class="sender">
+                <div class="message-text">
+                  Thanks n I know its awesome...!
+                </div>
+                <!--<span class="message-time pull-right">-->
+                <!--  Sun-->
+                <!--</span>-->
+              </div>
+            </div>
+          </div>
         </div>
-    </header>
+        <!-- Message Box End -->
 
-    <main class="container">
-        <div id="map">
-            <div class="mx-auto my-5" id="googleMap" style="width:100%;height:600px;"></div>
+        <!-- Reply Box -->
+        <div class="row reply">
+          <div class="col-sm-1 col-xs-1 reply-emojis">
+            <i class="fa fa-smile-o fa-2x"></i>
+          </div>
+          <div class="col-sm-9 col-xs-9 reply-main">
+            <textarea class="form-control" rows="1" id="comment"></textarea>
+          </div>
+          <div class="col-sm-1 col-xs-1 reply-recording">
+            <i class="fa fa-microphone fa-2x" aria-hidden="true"></i>
+          </div>
+          <div class="col-sm-1 col-xs-1 reply-send">
+            <i class="fa fa-send fa-2x" aria-hidden="true"></i>
+          </div>
         </div>
-        <article class="alert alert-info mx-auto">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </article>
-    </main>
+        <!-- Reply Box End -->
+      </div>
+      <!-- Conversation End -->
+    </div>
+    <!-- App One End -->
+  </div>
 
-    <footer></footer>
-
-    <script src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE_KEY }}&callback=myMap"></script>
-    <script src="{{ url_for('static', filename='main.js') }}"></script>
+  <!-- App End -->
 </body>
+
 </html>
