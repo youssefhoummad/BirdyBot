@@ -1,0 +1,50 @@
+/* Always set the map height explicitly to define the size of the div
+ * element that contains the map. */
+#map {
+  height: 100%;
+}
+/* Optional: Makes the sample page fill the window. */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color:#009688;
+}
+
+.container{
+  height: calc(100% - 40px);
+  padding: 0;
+  margin-top: 20px;
+  background-color: #ece5dd;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .06), 0 2px 5px 0 rgba(0, 0, 0, .2);
+  border-radius: 3px;
+}
+
+header{
+  height: 60px;
+  /*width: 100%;*/
+  background-color: #eee;
+  border-radius: 3px 3px 0 0;
+  /*z-index: 1000;*/
+}
+
+header img{
+  height: 50px;
+  width: 50px;
+}
+
+
+section{
+  height: calc(100% - 120px);
+  background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
+}
+
+footer {
+  background-color: #f5f1ee;
+  height: 60px;
+}
+
+.btn-primary{
+  background:#25d366;
+  border-color:#25d366;
+}

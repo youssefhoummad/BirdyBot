@@ -4,7 +4,6 @@
 
 
 
-
 html,
 body,
 div,
@@ -92,7 +91,7 @@ body {
   border-left: 0px solid rgba(0, 0, 0, .08);
   /*overflow-y: auto;*/
   background-color: #ece5dd;
-  /*background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');*/
+  background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
 }
 
 .message {
