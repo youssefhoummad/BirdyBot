@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='main2.css') }}">
   </head>
-  <body>
+  <body class="overflow-hidden">
     <div class="container">
       <!--to centred add class "justify-content-center"-->
       <header class="col d-flex align-items-center">
@@ -19,21 +19,21 @@
       <section class="overflow-auto" id="conversation">
 
 
-          <div class="message-body row justify-content-start">
-            <div class="message-main">
-              <div class="receiver">
-                  بسم الله الرحمن الرحيم
-              </div>
-            </div>
-          </div>
+          <!--<div class="message-body row justify-content-start">-->
+          <!--  <div class="message-main">-->
+          <!--    <div class="receiver">-->
+          <!--        بسم الله الرحمن الرحيم-->
+          <!--    </div>-->
+          <!--  </div>-->
+          <!--</div>-->
 
-          <div class="message-body row justify-content-end">
-            <div class="message-main">
-              <div class="sender">
-                  ذلك من فضل الله
-              </div>
-            </div>
-          </div>
+          <!--<div class="message-body row justify-content-end">-->
+          <!--  <div class="message-main">-->
+          <!--    <div class="sender">-->
+          <!--        ذلك من فضل الله-->
+          <!--    </div>-->
+          <!--  </div>-->
+          <!--</div>-->
 
 
 
@@ -72,7 +72,7 @@
     function message(){
       var text = document.getElementById("comment").value;
       var conversationEl = document.getElementById("conversation");
-      var messageEl = '<div class="message-body">\
+      var messageEl = '<div class="message-body row justify-content-end">\
                         <div class="message-main">\
                           <div class="sender">\
                              ' + text + '\
@@ -93,7 +93,7 @@
 
     function replay(content){
       var conversationEl = document.getElementById("conversation");
-      var messageEl = '<div class="message-body col align-self-start">\
+      var messageEl = '<div class="message-body row justify-content-start">\
                         <div class="message-main">\
                           <div class="receiver">\
                              ' + content + '\
