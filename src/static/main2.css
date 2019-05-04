@@ -36,8 +36,38 @@ header img{
 
 section{
   height: calc(100% - 120px);
+  padding:10px;
   background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
 }
+
+.message-body {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: auto;
+  height: auto;
+}
+.message-main{
+  max-width:60%;
+}
+
+.receiver {
+  width: auto !important;
+  padding: 4px 10px 7px !important;
+  border-radius: 10px 10px 10px 0;
+  background: #ffffff;
+  word-wrap: break-word;
+  display: inline-block;
+}
+
+.sender {
+  width: auto !important;
+  padding: 4px 10px 7px !important;
+  border-radius: 10px 10px 0 10px;
+  background: #dcf8c6;
+  word-wrap: break-word;
+  display: inline-block;
+}
+
 
 footer {
   background-color: #f5f1ee;
