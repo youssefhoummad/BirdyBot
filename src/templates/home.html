@@ -19,13 +19,7 @@
       <section class="overflow-auto" id="conversation">
 
 
-          <!--<div class="message-body row justify-content-start">-->
-          <!--  <div class="message-main">-->
-          <!--    <div class="receiver">-->
-          <!--        بسم الله الرحمن الرحيم-->
-          <!--    </div>-->
-          <!--  </div>-->
-          <!--</div>-->
+
 
           <!--<div class="message-body row justify-content-end">-->
           <!--  <div class="message-main">-->
@@ -35,7 +29,13 @@
           <!--  </div>-->
           <!--</div>-->
 
-
+          <!--<div class="message-body row justify-content-start">-->
+          <!--  <div class="message-main">-->
+          <!--    <div class="receiver">-->
+          <!--      <div id="map"></div>-->
+          <!--    </div>-->
+          <!--  </div>-->
+          <!--</div>-->
 
       </section>
 
@@ -47,7 +47,7 @@
           </div>
 
           <div class="col-2">
-            <button class="btn btn-primary w-100" type="submit" OnClick="message();return false">Send</button>
+            <button class="btn btn-primary w-100" type="submit" OnClick="replay();return false">Send</button>
           </div>
         </form>
       </footer>
@@ -55,74 +55,14 @@
     </div>
 
 
-    <!--<div id="map"></div>-->
+
     <script>
-      // var map;
-      // function initMap() {
-      //   map = new google.maps.Map(document.getElementById('map'), {
-      //     center: {lat: -34.397, lng: 150.644},
-      //     zoom: 8
-      //   });
-      // }
 
-    document.getElementById("comment").focus();
-
-
-
-    function message(){
-      var text = document.getElementById("comment").value;
-      var conversationEl = document.getElementById("conversation");
-      var messageEl = '<div class="message-body row justify-content-end">\
-                        <div class="message-main">\
-                          <div class="sender">\
-                             ' + text + '\
-                          </div>\
-                        </div>\
-                      </div>';
-      conversationEl.insertAdjacentHTML('beforeend', messageEl);
-
-
-
-      replay("you ask about " + text + " city?");
-      // replay(map(text));              // new msg with map
-      gotoBottom("conversation");     // go to the new msg
-
-      document.getElementById("comment").value = ""; // clear input user
-
-    }
-
-    function replay(content){
-      var conversationEl = document.getElementById("conversation");
-      var messageEl = '<div class="message-body row justify-content-start">\
-                        <div class="message-main">\
-                          <div class="receiver">\
-                             ' + content + '\
-                          </div>\
-                        </div>\
-                      </div>';
-      conversationEl.insertAdjacentHTML('beforeend', messageEl);
-    }
-
-    // function map(place){
-    //   var messageEl = '<div class="mapouter">\
-    //                     <div class="gmap_canvas" id="map">\
-    //                       <iframe width="100%" height="300" id="gmap_canvas" frameborder="0"\
-    //                       src="https://maps.google.com/maps?q=\
-    //                       '+place+'\
-    //                       &t=&z=6&ie=UTF8&iwloc=&output=embed"\
-    //                       scrolling="no" marginheight="0" marginwidth="0"></iframe>\
-    //                     </div>\
-    //                   </div>';
-    //   return messageEl;
-    // }
-
-    function gotoBottom(id){
-       var element = document.getElementById(id);
-       element.scrollTop = element.scrollHeight - element.clientHeight;
-    }
     </script>
-    <!--<script src="{{ url_for('static', filename='main2.js') }}"></script>-->
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDil99B2i6eZEujkuL1ID5tP49yVcwq44w&callback=initMap"
     async defer></script>
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKQX3cyZ7pVKmBwE8wiowivW9qH62AVk8&libraries=places&callback=initAutocomplete" async defer></script>-->
+
   </body>
 </html>
