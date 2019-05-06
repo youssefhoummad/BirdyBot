@@ -1,33 +1,27 @@
-/* Always set the map height explicitly to define the size of the div
- * element that contains the map. */
-#map {
-  height: 350px;
-  width: 400px;
-  border-radius: 10px;
-}
+/* @youssefhoummad. */
+
 
 html, body {
-  height: 100%;
+  height: calc(100% - 30px);
   margin: 0;
   padding: 0;
   background-color:#009688;
 }
 
 .container{
-  height: calc(100% - 40px);
+  height: 100%;
   padding: 0;
-  margin-top: 40px;
+  margin-top: 30px;
   background-color: #ece5dd;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .06), 0 2px 5px 0 rgba(0, 0, 0, .2);
   border-radius: 3px;
 }
 
+/* --header-- */
 header{
   height: 60px;
-  /*width: 100%;*/
   background-color: #eee;
   border-radius: 3px 3px 0 0;
-  /*z-index: 1000;*/
 }
 
 header img{
@@ -35,11 +29,11 @@ header img{
   width: 50px;
 }
 
-
+/* --conversation-- */
 section{
   height: calc(100% - 120px);
   padding:10px;
-  background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
+  background-image: url("bg.png");
 }
 
 .message-body {
@@ -70,7 +64,13 @@ section{
   display: inline-block;
 }
 
+#map {
+  height: 350px;
+  width: 400px;
+  border-radius: 10px;
+}
 
+/* --replay-- */
 footer {
   background-color: #f5f1ee;
   height: 60px;
