@@ -5,8 +5,8 @@ document.getElementById("comment").focus();
 
 
 // function to display msg in bottom
-function gotoBottom(id){
-   var element = document.getElementById(id);
+function gotoBottom(){
+   var element = document.getElementById("conversation");
    element.scrollTop = element.scrollHeight - element.clientHeight;
 }
 
@@ -52,6 +52,11 @@ function displayMap(query){
 function replay(){
   var text = document.getElementById("comment").value;
   displayMessage(text, "sender");
+
   displayMessage("you ask me about "+text+"?", "receiver");
   displayMap(text);
+
+  displayMessage("for more infos: <a>Click here</a>", "receiver");
+
+  gotoBottom();
 }
