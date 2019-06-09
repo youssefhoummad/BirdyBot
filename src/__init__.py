@@ -15,4 +15,4 @@ db = SQLAlchemy(app)
 
 
 from src import routes
-from src.models import *
+from src.models import Bird
