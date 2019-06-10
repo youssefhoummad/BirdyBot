@@ -1,6 +1,5 @@
-document.getElementById("comment").focus();
 
-
+document.getElementById("input").focus();
 
 
 
@@ -36,7 +35,7 @@ function displayMessage(content, type){
 
   // clear input
   if (type === "receiver") {
-    document.getElementById("comment").value = "";
+    document.getElementById("input").value = "";
   };
 }
 
@@ -44,19 +43,33 @@ function displayMessage(content, type){
 function displayMap(query){
   var zoomLevel = 10;
   var url = 'https://maps.google.com/maps?q='+query+'&t=&z='+zoomLevel+'&ie=UTF8&iwloc=&output=embed';
-  var mapEl = '<iframe width="100%" height="100%" id="gmap_canvas" src='+url+' frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>'; 
+  var mapEl = '<iframe width="100%" height="100%" id="gmap_canvas" src='+url+' frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>';
   displayMessage('<div id="map">'+mapEl+'</div>', "receiver");
 }
 
 
-function replay(){
-  var text = document.getElementById("comment").value;
+async function getJson(query){
+  var response = await fetch('/result/rr');
+  var data = await response.json();
+
+  return data.city;
+}
+
+
+
+async function replay(){
+  var text = document.getElementById("input").value;
   displayMessage(text, "sender");
 
   displayMessage("you ask me about "+text+"?", "receiver");
+
   displayMap(text);
 
   displayMessage("for more infos: <a>Click here</a>", "receiver");
+
+  displayMessage(await getJson(""), "receiver");
+
+  document.getElementById("input").value =  "";
 
   gotoBottom();
 }
