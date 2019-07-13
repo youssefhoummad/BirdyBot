@@ -14,13 +14,16 @@ def index():
 def answer():
     # TODO
     token = request.json['token']
+    bird = Bird.query.filter_by(name=token).first()
 
-    # bird = Bird.query.filter_by(name=query).first()
-
-    answer = render_template('_answer.html', content="after token")
-    answer = render_template_string(answer)
+    if not bird:
+        data = {"name": ""} 
+        return jsonify(data)
 
     data = {
-        "answer":answer,
+        "name": bird.name,
+        "image": bird.image,
+        "voice": bird.voice,
+        "more_info": bird.more_info
     }
     return jsonify(data)

@@ -42,28 +42,46 @@
     <script>
       $(document).ready(function() {
         $("#question").focus();
-        var send_html = '<div class="message-body row justify-content-end"><div class="message-main"><div class="sender">Content</div></div></div>';
+
+        var sender_html = '<div class="message-body row justify-content-end"><div class="message-main"><div class="sender">Content</div></div></div>';
+        var receiver_html = '<div class="message-body row justify-content-start"><div class="message-main"><div class="receiver">Content</div></div></div>';
+        
+        var img_html = '<img src="Content" class="img-fluid">'
+        var audio_html = '<audio controls><source src="Content" type="audio/mp3">Change Browser</audio>'
+
+        $.fn.showAnswer = function(data){ 
+          $("#conversation").append(
+              receiver_html.replace('Content', data.name), 
+              receiver_html.replace('Content', img_html.replace('Content',data.image)),
+              receiver_html.replace('Content', audio_html.replace('Content',data.voice)),
+              receiver_html.replace('Content', data.more_info),
+              );
+        };
         
         $("#send").click(function (event) {
           event.preventDefault();
 
           var question = $('#question').val();
-          $("#conversation").append(send_html.replace('Content', question));
+          $("#conversation").append(sender_html.replace('Content', question));
 
-          // var data = ;
           $.ajax({
               url: '/answer',
               data: JSON.stringify({token: question}),
               type: 'POST',
+              dataType: "json",
+              contentType: 'application/json;charset=UTF-8',
               success: function (data) {
-                $("#conversation").append(data.answer);
+                // if bird in database show answer esle print لا أعرف الطائر
+                if (data.name){
+                  $.fn.showAnswer(data); 
+                } else{
+                  $("#conversation").append(receiver_html.replace('Content', "لا أعرف هذا الطائر"));
+                };
               },
               error: function (error) {
                   console.log("ERROR");
                   console.log(error);
               },
-              dataType: "json",
-              contentType: 'application/json;charset=UTF-8',
           });
           $("#question").val("");
         });
