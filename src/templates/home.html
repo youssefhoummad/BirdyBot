@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>الآلي العجوز</title>
+    <title>طويري</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -14,7 +14,7 @@
       <!--to centred add class "justify-content-center"-->
       <header class="col d-flex align-items-center">
         <img class="rounded-circle" src="{{ url_for('static', filename='logo.png') }}">
-        <span class="mx-2 font-weight-bold">GrandPy Bot</span>
+        <span class="mx-2 font-weight-bold">BirdyBot</span>
       </header>
 
 
@@ -28,17 +28,47 @@
       <footer class="d-flex align-items-center">
         <form class="form-inline w-100">
           <div class="col-10">
-            <input class="form-control w-100" rows="1" id="comment"></input>
+            <input class="form-control w-100" rows="1" name="question" id="question"></input>
           </div>
 
           <div class="col-2">
-            <button class="btn btn-primary w-100" type="submit" OnClick="replay();return false">Send</button>
+            <button type="submit" id="send" class="btn btn-primary w-100">Send</button>
           </div>
         </form>
       </footer>
-
+      
     </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script>
+      $(document).ready(function() {
+        $("#question").focus();
+        var send_html = '<div class="message-body rowjustify-content-end"><div class="message-main"><div class="sender">Content</div></div></div>';
+        
+        $("#send").click(function (event) {
+          event.preventDefault();
 
-    <script src="{{ url_for('static', filename='main.js') }}"></script>
+          var question = $('#question').val();
+          $("#conversation").append(send_html.replace('Content', question));
+
+          // var data = ;
+          $.ajax({
+              url: '/answer',
+              data: JSON.stringify({token: question}),
+              type: 'POST',
+              success: function (data) {
+                $("#conversation").append(data.answer);
+              },
+              error: function (error) {
+                  console.log("ERROR");
+                  console.log(error);
+              },
+              dataType: "json",
+              contentType: 'application/json;charset=UTF-8',
+          });
+          $("#question").val("");
+        });
+      });
+    </script>
+    <!-- <script src="{{ url_for('static', filename='main.js') }}"></script> -->
   </body>
 </html>

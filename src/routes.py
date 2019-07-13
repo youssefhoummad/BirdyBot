@@ -1,4 +1,5 @@
-from flask import render_template, jsonify
+from flask import render_template, jsonify, request, render_template_string
+
 
 from src import app
 from src.models import Bird
@@ -9,14 +10,17 @@ def index():
     return render_template('home.html')
 
 
-@app.route("/result/<query>", methods=['GET', 'POST'])
-def result(query):
+@app.route("/answer", methods=['POST'])
+def answer():
     # TODO
-    bird = Bird.query.filter_by(name=query).first()
+    token = request.json['token']
+
+    # bird = Bird.query.filter_by(name=query).first()
+
+    answer = render_template('_answer.html', content="after token")
+    answer = render_template_string(answer)
+
     data = {
-        "name": bird.name,
-        "image": bird.image,
-        "voice": bird.voice,
-        "more": bird.more_info
+        "answer":answer,
     }
     return jsonify(data)

@@ -1,5 +1,5 @@
 
-document.getElementById("input").focus();
+document.getElementById("comment").focus();
 
 
 
