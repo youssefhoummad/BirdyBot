@@ -49,6 +49,7 @@
         
         var img_html = '<img src="Content" class="img-fluid">'
         var audio_html = '<audio controls><source src="Content" type="audio/mp3">Change Browser</audio>'
+        var table_html = ''
 
         $.fn.showAnswer = function(data){ 
           $("#conversation").append(
@@ -63,10 +64,11 @@
           event.preventDefault();
 
           var question = $('#question').val();
+          console.log(question);
           $("#conversation").append(sender_html.replace('Content', question));
 
           $.ajax({
-              url: '/answer',
+              url: '/answer/',
               data: JSON.stringify({token: question}),
               type: 'POST',
               dataType: "json",
@@ -74,6 +76,7 @@
               success: function (data) {
                 // if bird in database show answer esle print لا أعرف الطائر
                 if (data.name){
+                  console.log("data.name");
                   $.fn.showAnswer(data); 
                 } else{
                   $("#conversation").append(receiver_html.replace('Content', "لا أعرف هذا الطائر"));

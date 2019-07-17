@@ -41,5 +41,13 @@ class Bird(db.Model):
     voice = db.Column(db.String(120))
     more_info = db.Column(db.String(120))
 
+    @property
+    def rank(self):
+        return self.family.rank
+    
+    @property
+    def category(self):
+        return self.family.rank.category
+
     def __str__(self):
         return f"<Bird {self.name}>"

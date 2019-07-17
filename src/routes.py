@@ -10,7 +10,7 @@ def index():
     return render_template('home.html')
 
 
-@app.route("/answer", methods=['POST'])
+@app.route("/answer/", methods=['POST'])
 def answer():
     # TODO
     token = request.json['token']
@@ -21,9 +21,13 @@ def answer():
         return jsonify(data)
 
     data = {
+        "category": bird.category.name,
+        "rank": bird.rank.name,
+        "family": bird.family.name,
         "name": bird.name,
+        
         "image": bird.image,
         "voice": bird.voice,
-        "more_info": bird.more_info
+        "more_info": bird.more_info,
     }
     return jsonify(data)

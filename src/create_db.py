@@ -31,5 +31,4 @@ db.session.add(peafowl)
 
 
 
-# commit all
 db.session.commit()
