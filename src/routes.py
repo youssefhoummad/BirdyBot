@@ -20,15 +20,10 @@ def answer():
     # if not bird:
     #     data = {"name": ""} 
     #     return jsonify(data)
-
+ 
     data = {
-        # "category": bird.category.name,
-        # "rank": bird.rank.name,
-        # "family": bird.family.name,
-        # "name": bird.name, 
-        
         "image": utils.get_photo(query),
         "voice": utils.get_song(query),
-        "more_info" : str(query)
+        "more_info" : str(query) 
     }
     return jsonify(data)

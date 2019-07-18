@@ -48,9 +48,10 @@
         var receiver_html = '<div class="message-body row justify-content-start"><div class="message-main"><div class="receiver">Content</div></div></div>';
         
         var img_html = '<img src="Content" class="img-fluid">'
-        var audio_html = '<audio class="bg-white" controls><source src="Content" type="audio/mp3">Change Browser</audio>'
+        var audio_html = '<audio controls><source src="Content" type="audio/mp3">Change Browser</audio>'
         var table_html = '<table dir="rtl" class="table text-right"><thead><tr><th scope="col">الطائفة</th><th scope="col">الرتبة</th><th scope="col">الأسرة</th><th scope="col">الاسم</th></tr></thead><tbody><tr><td>Category</td><td>Rank</td><td>Family</td><td>Bird</td></tr></table>'
         var a_html = '<a href="https://en.wikipedia.org/wiki/Content" target="_blank">More info</a>'
+        var waiting_html = '<div id="lds-ellipsis" class="mx-auto bg-white"><div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div></div>'
         
         $.fn.showAnswer = function(data){ 
           // var replaceChars={ "Category":data.category, "Rank":data.rank, "Family":data.family, "Bird":data.name };
@@ -68,9 +69,8 @@
           event.preventDefault();
 
           var question = $('#question').val();
-          console.log(question);
           $("#conversation").append(sender_html.replace('Content', question));
-
+          $("#conversation").append(receiver_html.replace('Content', waiting_html));
           $.ajax({
               url: '/answer/',
               data: JSON.stringify({token: question}),
@@ -80,7 +80,9 @@
               success: function (data) {
                 // if bird in database show answer esle print لا أعرف الطائر
                 // if (data.name){
+                $('#lds-ellipsis').remove();
                 $.fn.showAnswer(data); 
+                $('#conversation').animate({scrollTop: $('#conversation').height()}, 1000);
                 // } else{
                   // $("#conversation").append(receiver_html.replace('Content', "لا أعرف هذا الطائر"));
                 // };
