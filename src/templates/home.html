@@ -48,18 +48,19 @@
         var receiver_html = '<div class="message-body row justify-content-start"><div class="message-main"><div class="receiver">Content</div></div></div>';
         
         var img_html = '<img src="Content" class="img-fluid">'
-        var audio_html = '<audio controls><source src="Content" type="audio/mp3">Change Browser</audio>'
+        var audio_html = '<audio class="bg-white" controls><source src="Content" type="audio/mp3">Change Browser</audio>'
         var table_html = '<table dir="rtl" class="table text-right"><thead><tr><th scope="col">الطائفة</th><th scope="col">الرتبة</th><th scope="col">الأسرة</th><th scope="col">الاسم</th></tr></thead><tbody><tr><td>Category</td><td>Rank</td><td>Family</td><td>Bird</td></tr></table>'
-
+        var a_html = '<a href="https://en.wikipedia.org/wiki/Content" target="_blank">More info</a>'
+        
         $.fn.showAnswer = function(data){ 
-          var replaceChars={ "Category":data.category, "Rank":data.rank, "Family":data.family, "Bird":data.name };
+          // var replaceChars={ "Category":data.category, "Rank":data.rank, "Family":data.family, "Bird":data.name };
           
           $("#conversation").append(
-            receiver_html.replace('Content',  //http://jsfiddle.net/fnRcL/
-              table_html.replace(/Category|Rank|Family|Bird/g,function(match) {return replaceChars[match];})),
+            // receiver_html.replace('Content',  //http://jsfiddle.net/fnRcL/
+              // table_html.replace(/Category|Rank|Family|Bird/g,function(match) {return replaceChars[match];})),
             receiver_html.replace('Content', img_html.replace('Content',data.image)),
             receiver_html.replace('Content', audio_html.replace('Content',data.voice)),
-            receiver_html.replace('Content', data.more_info),
+            receiver_html.replace('Content', a_html.replace('Content', data.more_info)),
               );
         };
         
@@ -78,11 +79,11 @@
               contentType: 'application/json;charset=UTF-8',
               success: function (data) {
                 // if bird in database show answer esle print لا أعرف الطائر
-                if (data.name){
-                  $.fn.showAnswer(data); 
-                } else{
-                  $("#conversation").append(receiver_html.replace('Content', "لا أعرف هذا الطائر"));
-                };
+                // if (data.name){
+                $.fn.showAnswer(data); 
+                // } else{
+                  // $("#conversation").append(receiver_html.replace('Content', "لا أعرف هذا الطائر"));
+                // };
               },
               error: function (error) {
                   console.log("ERROR");

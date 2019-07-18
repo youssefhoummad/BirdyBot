@@ -3,6 +3,7 @@ from flask import render_template, jsonify, request, render_template_string
 
 from src import app
 from src.models import Bird
+from src import utils
 
 
 @app.route("/")
@@ -12,22 +13,22 @@ def index():
 
 @app.route("/answer/", methods=['POST'])
 def answer():
-    # TODO
-    token = request.json['token']
-    bird = Bird.query.filter_by(name=token).first()
+    query = request.json['token'].lower()
+    # parese_token = parese
+    # bird = Bird.query.filter_by(name=token).first()
 
-    if not bird:
-        data = {"name": ""} 
-        return jsonify(data)
+    # if not bird:
+    #     data = {"name": ""} 
+    #     return jsonify(data)
 
     data = {
-        "category": bird.category.name,
-        "rank": bird.rank.name,
-        "family": bird.family.name,
-        "name": bird.name,
+        # "category": bird.category.name,
+        # "rank": bird.rank.name,
+        # "family": bird.family.name,
+        # "name": bird.name, 
         
-        "image": bird.image,
-        "voice": bird.voice,
-        "more_info": bird.more_info,
+        "image": utils.get_photo(query),
+        "voice": utils.get_song(query),
+        "more_info" : str(query)
     }
     return jsonify(data)
