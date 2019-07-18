@@ -1,4 +1,5 @@
-# GrandPy_Bot
+# Birdy_Bot
+
 
 ![screen shot](https://github.com/youssefhoummad/GrandPy_Bot/blob/master/screenshot.png)
 
